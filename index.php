@@ -1,6 +1,6 @@
 <!-- 
     192.168.0.198/classi/5E/smirnov/index.php
-    /
+    192.168.105.20/5E/smirnov/index.php
     locaclhost:8080/index.php
 -->
 
@@ -62,6 +62,10 @@
         .mid_line {
             background: <?=$TITLE_COLOR;?>;
         }
+        
+        .menu_line{
+            background: <?=$TITLE_COLOR;?>;
+        }
 
         input {
             border: 2px solid <?=$SEC_TITLE_COLOR;?>;
@@ -95,13 +99,18 @@
                     </script>
                 </p>
             </div>
-            <p class="p_title">
+            <p class="p_title" id="header_title">
                 Cool WebApp<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="p_sec_title">by
                     Laryyokkk</span>
             </p>
-
-            <div id="header_menu">
-
+            <div id="wrapper_menu">
+                <div id="header_menu">
+                    <div class="menu_line"></div>
+                    <div class="menu_line"></div>
+                    <div class="menu_line"></div>
+                    <div class="menu_line"></div>
+                    <div class="menu_line"></div>
+                </div>
             </div>
         </header>
         <main>
