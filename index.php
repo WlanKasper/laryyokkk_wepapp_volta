@@ -22,14 +22,19 @@
     <title>
         <?= "Script PHP"; ?>
     </title>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./css/style.css">
 
     <style>
         body {
             background: <?=$BACKGROUND_COLOR;?>;
         }
 
-        #header_menu{
+
+        #header_menu:hover{
+            transform: rotate(90deg);
+        }
+
+        #header_menu:hover .menu_line{
             background: <?=$SEC_TITLE_COLOR;?>;
         }
 
@@ -109,7 +114,6 @@
                     <div class="menu_line"></div>
                     <div class="menu_line"></div>
                     <div class="menu_line"></div>
-                    <div class="menu_line"></div>
                 </div>
             </div>
         </header>
@@ -124,13 +128,12 @@
             </div>
             <div class="wrapper">
                 <div class="tb_box">
-                    <form action="" method="post">
+                    <form action="./php/post_to_db.php" method="post">
                         <p class="p_text p_sp_text">
                             POST
                         </p>
-                        <input type="text" name="input_text" class="_input" id="input_firstname"
-                            placeholder="firstname">
-                        <input type="text" name="input_text" class="_input" id="input_lastname" placeholder="lastname">
+                        <input type="text" name="input_firstname" class="_input" id="input_firstname" placeholder="firstname">
+                        <input type="text" name="input_lastname"  class="_input" id="input_lastname"  placeholder="lastname">
                         <button type="submit">
                             <p class="p_text_btn">
                                 Submit
@@ -138,20 +141,19 @@
                         </button>
                     </form>
                     <p class="p_text p_text_sm">
-                        POST requests is an ...
+                        temp
                     </p>
                 </div>
 
                 <div class="mid_line"></div>
 
                 <div class="tb_box">
-                    <form action="" method="get">
+                    <form action="./php/get_from_db.php" method="get">
                         <p class="p_text p_sp_text">
                             GET
                         </p>
-                        <input type="text" name="input_text" class="_input" id="input_firstname"
-                            placeholder="firstname">
-                        <input type="text" name="input_text" class="_input" id="input_lastname" placeholder="lastname">
+                        <input type="text" name="input_firstname" class="_input" id="input_firstname" placeholder="firstname">
+                        <input type="text" name="input_lastname"  class="_input" id="input_lastname"  placeholder="lastname">
                         <button type="submit">
                             <p class="p_text_btn">
                                 Submit
@@ -159,7 +161,7 @@
                         </button>
                     </form>
                     <p class="p_text p_text_sm">
-                        GET requests is an ...
+                        temp
                     </p>
                 </div>
             </div>
@@ -176,4 +178,6 @@
     html.clientHeight, html.scrollHeight, html.offsetHeight);
     document.getElementsByTagName('section')[0].style.height = _height + "px";
 </script>
+
+<script src="./js/script.js"></script>
 </html>
