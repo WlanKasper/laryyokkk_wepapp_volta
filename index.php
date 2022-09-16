@@ -13,11 +13,11 @@
     $SEC_TEXT_COLOR = "#4D4847";
 
     include './php/manager_db.php';
-    Close_mysql_conn(Open_mysql_conn());
+    Open_mysql_conn();
 
-    session_start();
     $conn_status = $_SESSION['conn_status'];
     $db_response = $_SESSION['db_response'];
+    session_destroy();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -185,7 +185,7 @@
             <script>
                 let status_box = document.getElementsByClassName('p_dp_status')[0];
                 let response_box = document.getElementsByClassName('p_dp_response')[0];
-                let args_status = ['Database: <?= $database_name; ?>', "Tables: ", "Connection: <?= $conn_status; ?>"];
+                let args_status = ['Database: <?= $database_name; ?>', "Tables: ", "Status: <?= $conn_status; ?>"];
 
                 status_box.innerHTML = "";
                 for (i = 0; i < args_status.length; i++) {

@@ -2,8 +2,6 @@
     include './manager_db.php';
     $conn = Open_mysql_conn();
 
-    session_start();
-
     $input_firstname = $_GET["input_firstname"];
     $input_lastname = $_GET["input_lastname"];
 

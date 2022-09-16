@@ -1,8 +1,6 @@
 <?php
     include './manager_db.php';
     $conn = Open_mysql_conn();
-
-    session_start();
     
     $input_firstname = $_POST["input_firstname"];
     $input_lastname = $_POST["input_lastname"];
