@@ -1,17 +1,30 @@
 <?php
-    function OpenCon() {
-        echo "Opening connection";
-        $server_name = "localhost";
-        $username = "laryyokkk";
-        $password = "ulSmirnov2003";
-        $database_name="cool_webapp";
-        $conn = new mysqli($server_name, $username, $password, $database_name) or die("Connect failed: %s\n". $conn -> error);
+    static $server_name     = "localhost";
+    static $username        = "laryyokkk";
+    static $password        = "ulSmirnov2003";
+    static $database_name   = "cool_webapp";
 
-        return $conn;
+    function Open_mysql_conn(){
+        session_start();
+
+        try {
+            $conn = new mysqli($GLOBALS["server_name"], $GLOBALS["username"], $GLOBALS["password"], $GLOBALS["database_name"]);
+            $conn_status = "Connected";
+            $_SESSION['conn_status'] = $conn_status;
+            return $conn;
+        } catch (Throwable $e) {
+            $conn_status = "Connect failed";
+            $_SESSION['conn_status'] = $conn_status;
+            $db_response = $e;
+            $_SESSION['db_response'] = $db_response;
+        }
     }
 
-    function CloseCon($conn) {
-        echo "Closing connection";
-        $conn -> close();
+    function Close_mysql_conn($conn) {
+        if ( $conn != null){
+            $conn -> close();
+            $conn_status = "Disconected";
+            $_SESSION['conn_status'] = $conn_status;
+        }
     }
 ?>

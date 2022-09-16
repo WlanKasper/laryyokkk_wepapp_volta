@@ -11,6 +11,13 @@
     $SEC_TITLE_COLOR = "#4CABA5";
     $TEXT_COLOR = "#F4FFF8";
     $SEC_TEXT_COLOR = "#4D4847";
+
+    include './php/manager_db.php';
+    Close_mysql_conn(Open_mysql_conn());
+
+    session_start();
+    $conn_status = $_SESSION['conn_status'];
+    $db_response = $_SESSION['db_response'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -140,9 +147,9 @@
                             </p>
                         </button>
                     </form>
-                    <p class="p_text p_text_sm">
+                    <!-- <p class="p_text p_text_sm">
                         temp
-                    </p>
+                    </p> -->
                 </div>
 
                 <div class="mid_line"></div>
@@ -160,14 +167,39 @@
                             </p>
                         </button>
                     </form>
-                    <p class="p_text p_text_sm">
+                    <!-- <p class="p_text p_text_sm">
                         temp
-                    </p>
+                    </p> -->
                 </div>
             </div>
         </main>
         <footer>
-            <!-- todo -->
+            <div id="db_status_box">
+                <p class="p_text p_text_sm  p_dp_status">     
+                </p>
+            </div>
+            <div id="db_box">
+                <p class="p_text p_text_sm p_dp_response">
+                </p>
+            </div>
+            <script>
+                let status_box = document.getElementsByClassName('p_dp_status')[0];
+                let response_box = document.getElementsByClassName('p_dp_response')[0];
+                let args_status = ['Database: <?= $database_name; ?>', "Tables: ", "Connection: <?= $conn_status; ?>"];
+
+                status_box.innerHTML = "";
+                for (i = 0; i < args_status.length; i++) {
+                    status_box.appendChild(document.createTextNode(args_status[i]));
+                    status_box.appendChild(document.createElement("br"));
+                }
+
+                let response_box_cont = document.createTextNode('<?php if ($db_response != null) { echo $db_response; } else {echo '';} ?>');
+                response_box.appendChild(response_box_cont);
+
+                setInterval(function(){
+                    response_box.innerHTML = "";
+                }, 5000);
+            </script>
         </footer>
     </section>
 </body>
