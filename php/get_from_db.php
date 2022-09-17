@@ -10,12 +10,10 @@
     
     if ($conn != null && $result->num_rows > 0) {
       while($row = $result->fetch_assoc()) {
-        $db_response = "id: " . $row["id_user"]. " - Name: " . $row["firstname_user"]. " " . $row["lastname_user"];
-        $_SESSION['db_response'] = $db_response;
+        $_SESSION['db_response'] = "id: " . $row["id_user"]. "; Firstname: " . $row["firstname_user"]. "; Lastname: " . $row["lastname_user"];
       }
     } else {
-        $db_response = "0 results";
-        $_SESSION['db_response'] = $db_response;
+        $_SESSION['db_response'] = "0 results";
     }
 
 

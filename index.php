@@ -15,6 +15,7 @@
     include './php/manager_db.php';
     Open_mysql_conn();
 
+    $tables = Get_all_tables_names();
     $conn_status = $_SESSION['conn_status'];
     $db_response = $_SESSION['db_response'];
     session_destroy();
@@ -26,9 +27,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-        <?= "Script PHP"; ?>
-    </title>
+    <title>Cool WebApp by Laryyokkk</title>
     <link rel="stylesheet" href="./css/style.css">
 
     <style>
@@ -147,9 +146,6 @@
                             </p>
                         </button>
                     </form>
-                    <!-- <p class="p_text p_text_sm">
-                        temp
-                    </p> -->
                 </div>
 
                 <div class="mid_line"></div>
@@ -167,9 +163,6 @@
                             </p>
                         </button>
                     </form>
-                    <!-- <p class="p_text p_text_sm">
-                        temp
-                    </p> -->
                 </div>
             </div>
         </main>
@@ -185,7 +178,7 @@
             <script>
                 let status_box = document.getElementsByClassName('p_dp_status')[0];
                 let response_box = document.getElementsByClassName('p_dp_response')[0];
-                let args_status = ['Database: <?= $database_name; ?>', "Tables: ", "Status: <?= $conn_status; ?>"];
+                let args_status = ['Database: <?= $database_name; ?>', "Tables: <?= $tables; ?>", "Status: <?= $conn_status; ?>"];
 
                 status_box.innerHTML = "";
                 for (i = 0; i < args_status.length; i++) {

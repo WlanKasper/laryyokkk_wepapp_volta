@@ -179,7 +179,6 @@ input:focus {
 
 .p_text_sm {
     width: 250px;
-    height: 229px;
 
     margin: 0 20px;
 
@@ -223,4 +222,14 @@ footer {
 
 .p_dp_response{
     width: unset;
+}
+
+#db_status_box,
+#db_box{
+    padding: 20px 0;
+}
+
+.p_dp_status,
+.p_dp_response{
+    align-items: flex-end;
 }

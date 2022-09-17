@@ -4,27 +4,38 @@
     static $password        = "ulSmirnov2003";
     static $database_name   = "cool_webapp";
 
-    function Open_mysql_conn(){
+    function Open_mysql_conn() {
         session_start();
 
         try {
             $conn = new mysqli($GLOBALS["server_name"], $GLOBALS["username"], $GLOBALS["password"], $GLOBALS["database_name"]);
-            $conn_status = "Connected";
-            $_SESSION['conn_status'] = $conn_status;
+            $_SESSION['conn_status'] = "Connected";
             return $conn;
         } catch (Throwable $e) {
-            $conn_status = "Connect failed";
-            $_SESSION['conn_status'] = $conn_status;
-            $db_response = $e;
-            $_SESSION['db_response'] = $db_response;
+            $_SESSION['conn_status'] = "Connect failed";
+            $_SESSION['db_response'] = $e;
         }
     }
 
     function Close_mysql_conn($conn) {
         if ( $conn != null){
             $conn -> close();
-            $conn_status = "Disconected";
-            $_SESSION['conn_status'] = $conn_status;
+            $_SESSION['conn_status'] ="Disconected";
         }
+    }
+
+    function Get_all_tables_names() {
+        $pdo = new PDO('mysql:host=localhost;dbname=cool_webapp', 'root', '');
+        $query = 'SHOW tables FROM ' . $GLOBALS["database_name"] . ';';
+
+        $statement = $pdo->prepare($query);
+        $statement->execute();
+        $tables = $statement->fetchAll(PDO::FETCH_NUM);
+
+        $resp = array();
+        foreach($tables as $table){
+            $resp[] = $table[0];
+        }
+        return implode("; ", $resp);
     }
 ?>

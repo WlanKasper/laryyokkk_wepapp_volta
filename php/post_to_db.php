@@ -8,11 +8,9 @@
     $sql = "INSERT INTO names (firstname_user, lastname_user) VALUES ('$input_firstname', '$input_lastname');";
 
     if ($conn != null && $conn->query($sql) === TRUE) {
-        $db_response = "New record created successfully";
-        $_SESSION['db_response'] = $db_response;
+        $_SESSION['db_response'] = "New record created successfully";
     } else {
-        $db_response  = "Error: " . $sql . "<br>" . $conn->error;
-        $_SESSION['db_response'] = $db_response;
+        $_SESSION['db_response'] = "Error: " . $sql . "<br>" . $conn->error;
     }
 
     header("Location: {$_SERVER["HTTP_REFERER"]}");
